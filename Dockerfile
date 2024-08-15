@@ -1,5 +1,9 @@
 FROM openjdk:21-jdk
-WORKDIR /app
-COPY target/mongoDB_dev-0.0.1-SNAPSHOT.jar /app/app.jar
-EXPOSE 8102
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+ARG JAR_FILE=target/*.jar
+
+COPY ${JAR_FILE} mongoDBdev.jar
+
+ENTRYPOINT ["java","-jar","/mongoDBdev.jar"]
+
+EXPOSE 8104
